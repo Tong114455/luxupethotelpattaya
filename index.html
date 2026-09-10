@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXU Pet Hotel | โรงแรมสัตว์เลี้ยงพรีเมียม พัทยา มาบประชัน</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="LUXU Pet Hotel โรงแรมสัตว์เลี้ยง 5 ดาว พัทยา มาบประชัน ต.โป่ง บริการรับฝากเลี้ยงสุนัข แมว ห้องพัก VIP ROOM, DELUXE CAT CONDO, THE CAT PENTHOUSE พร้อม DOG/CAT SPA PREMIUM และสนามหญ้าวิ่งเล่น ดูแล 24 ชั่วโมง มี LIVE WEBCAM">
+    <meta name="keywords" content="LUXU Pet Hotel, โรงแรมสัตว์เลี้ยง, โรงแรมสุนัข, โรงแรมแมว, รับฝากเลี้ยงสัตว์เลี้ยง, ฝากหมาพัทยา, ฝากแมวพัทยา, โรงแรมสัตว์เลี้ยงพัทยา, Pet Hotel Pattaya, Dog Hotel Pattaya, Cat Hotel Pattaya, VIP ROOM สุนัข, DELUXE CAT CONDO, THE CAT PENTHOUSE, อาบน้ำตัดขนสุนัข, อาบน้ำตัดขนแมว, สปาสัตว์เลี้ยง, Dog Spa Premium, Cat Spa Pattaya, โรงแรมสัตว์เลี้ยงมาบประชัน, โรงแรมสุนัขมีสนามวิ่งเล่น, โรงแรมสัตว์เลี้ยงมีกล้องวงจรปิด, โรงแรมสัตว์เลี้ยง 5 ดาว, Luxury Pet Hotel">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="LUXU Pet Hotel">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="LUXU Pet Hotel | โรงแรมสัตว์เลี้ยงพรีเมียม พัทยา มาบประชัน">
+    <meta property="og:description" content="สัมผัสประสบการณ์การพักผ่อนระดับ 5 ดาวสำหรับสัตว์เลี้ยง ฝากเลี้ยงหมาแมวพัทยา มีสปา คอนโดแมว และสนามหญ้าวิ่งเล่น ดูแล 24 ชม.">
+    <meta property="og:image" content="https://github.com/Tong114455/doghotttel/blob/main/%E0%B9%82%E0%B8%A5%E0%B9%82%E0%B8%81%E0%B9%89.jpg?raw=true">
+    <meta property="og:type" content="website">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-light: #f9e596;
+            --gold-dark: #aa8623;
+            --gold-glow: rgba(212, 175, 55, 0.5);
+            --dark-bg: #0f0e0d;
+            --card-bg: #ffffff;
+            --light-cream: #faf9f6;
+            --text-dark: #2c2a29;
+            --text-light: #ffffff;
+            --border-color: rgba(212, 175, 55, 0.3);
+            --transition-speed: 0.5s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none !important;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--dark-bg); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark)); border-radius: 10px; }
+
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: var(--light-cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+
+        /* --- Preloader --- */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--dark-bg);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+        
+        .loader-logo i {
+            font-size: 3rem;
+            color: var(--gold);
+            animation: pulseGlow 2s infinite alternate;
+        }
+        
+        .loader-line {
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            margin-top: 20px;
+            animation: loadLine 1.5s ease-in-out forwards;
+        }
+
+        /* --- Custom Cursor --- */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 6px; height: 6px;
+            background-color: var(--gold);
+            box-shadow: 0 0 10px var(--gold);
+        }
+        .cursor-outline {
+            width: 35px; height: 35px;
+            border: 1px solid var(--gold-light);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        .cursor-outline.expand {
+            width: 60px; height: 60px;
+            background-color: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold);
+            backdrop-filter: blur(2px);
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(15, 14, 13, 0.4);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: padding 0.4s ease, background 0.4s;
+        }
+
+        header.scrolled {
+            padding: 12px 50px;
+            background: rgba(15, 14, 13, 0.85);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 48px; border-radius: 8px; object-fit: contain; }
+
+        nav ul { display: flex; list-style: none; gap: 35px; }
+        nav a {
+            color: #ddd; text-decoration: none; font-size: 11px; letter-spacing: 2px;
+            text-transform: uppercase; position: relative; padding: 5px 0; transition: color 0.3s;
+        }
+        nav a::before {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px;
+            background: var(--gold); transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        nav a:hover { color: var(--gold-light); text-shadow: 0 0 8px rgba(249, 229, 150, 0.3); }
+        nav a:hover::before { width: 100%; }
+
+        .header-actions { display: flex; align-items: center; gap: 20px; }
+
+        .btn-book {
+            position: relative;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold);
+            color: var(--gold-light);
+            padding: 10px 28px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            border-radius: 30px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            text-transform: uppercase;
+        }
+        .btn-book::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.7s ease;
+        }
+        .btn-book:hover::before { left: 100%; }
+        .btn-book:hover {
+            background: var(--gold);
+            color: #000;
+            box-shadow: 0 0 25px var(--gold-glow);
+            transform: translateY(-2px);
+        }
+
+        .lang-switch {
+            display: flex; align-items: center; gap: 8px; color: #fff; font-size: 11px;
+            border: 1px solid rgba(255,255,255,0.2); padding: 8px 14px; border-radius: 20px;
+            background: rgba(255,255,255,0.05); transition: all 0.3s ease;
+        }
+        .lang-switch:hover {
+            border-color: var(--gold); background: rgba(212, 175, 55, 0.15);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+        .lang-switch img { width: 20px; height: 14px; border-radius: 2px; object-fit: cover; }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: var(--text-light); overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0; z-index: -2;
+            background-size: cover; background-position: center;
+            transition: background-image 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            background-image: url('https://github.com/Tong114455/doghotttel/blob/main/%E0%B8%AB%E0%B8%A1%E0%B8%B2.jpg?raw=true');
+        }
+        .hero-overlay {
+            position: absolute; inset: 0; z-index: -1;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(15,14,13,0.3) 50%, rgba(0,0,0,0.8) 100%);
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 150px;
+            background: linear-gradient(to top, var(--light-cream), transparent); z-index: 1; pointer-events: none;
+        }
+
+        #particles { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+        .particle {
+            position: absolute; bottom: -10px; width: 3px; height: 3px;
+            background: var(--gold-light); border-radius: 50%;
+            box-shadow: 0 0 10px var(--gold);
+            animation: floatUp linear infinite; opacity: 0;
+        }
+
+        .pet-toggle {
+            position: absolute; top: 120px; z-index: 10;
+            display: flex; background: rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 40px; padding: 5px;
+            backdrop-filter: blur(10px); box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+        .toggle-btn {
+            background: transparent; color: #aaa; border: none; padding: 10px 35px;
+            border-radius: 30px; font-size: 12px; letter-spacing: 2px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; gap: 8px;
+        }
+        .toggle-btn.active {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+            color: #000; font-weight: 600; box-shadow: 0 0 20px var(--gold-glow); transform: scale(1.05);
+        }
+
+        .hero-content { z-index: 2; max-width: 900px; padding: 0 20px; position: relative; }
+        .hero-content h3 {
+            font-family: 'Prompt', sans-serif; font-weight: 300; font-size: 18px; letter-spacing: 8px;
+            color: var(--gold); margin-bottom: 20px; animation: fadeInUp 1s ease 0.5s both;
+        }
+        .hero-content h1 {
+            font-size: 6rem; line-height: 1.1; margin-bottom: 25px; letter-spacing: 2px;
+            background: linear-gradient(180deg, #ffffff 20%, var(--gold-light) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+            animation: scaleReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s both;
+        }
+        .hero-content p {
+            font-size: 1.2rem; font-weight: 300; letter-spacing: 1.5px; color: #eee;
+            transition: opacity 0.5s, transform 0.5s; animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        /* --- Features Section --- */
+        .features {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+            max-width: 1240px; margin: -80px auto 80px; padding: 40px;
+            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            border-radius: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255, 255, 255, 0.8); border-top: 1px solid #fff;
+            border-left: 1px solid #fff; position: relative; z-index: 20;
+        }
+        .feature-box { text-align: center; padding: 20px 10px; transition: transform 0.4s; }
+        .feature-box:hover { transform: translateY(-10px); }
+        .feature-box i {
+            font-size: 36px; margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .feature-box:hover i { transform: scale(1.3) rotateY(180deg); }
+        .feature-box h4 { font-size: 15px; margin-bottom: 12px; letter-spacing: 1.5px; color: var(--dark-bg); font-weight: 600; }
+        .feature-box p { font-size: 13px; color: #666; line-height: 1.6; font-weight: 300; }
+
+        /* --- Rooms Section --- */
+        .rooms-section { padding: 40px 20px 60px; text-align: center; }
+        .section-title {
+            font-size: 3rem; margin-bottom: 60px; letter-spacing: 4px; color: var(--dark-bg);
+            position: relative; display: inline-block;
+        }
+        .section-title::after {
+            content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+            width: 100px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .rooms-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px;
+            max-width: 1300px; margin: 0 auto; perspective: 1000px;
+        }
+        .room-card {
+            background: var(--card-bg); border-radius: 24px; overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);
+            text-align: left; transition: box-shadow 0.4s ease, border-color 0.4s ease;
+            transform-style: preserve-3d; will-change: transform;
+        }
+        .room-card:hover {
+            box-shadow: 0 30px 60px rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+        .room-img-wrapper { position: relative; overflow: hidden; height: 260px; transform: translateZ(30px); }
+        .room-card img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1); filter: brightness(0.9);
+        }
+        .room-card:hover img { transform: scale(1.15); filter: brightness(1.05); }
+        .room-info { padding: 30px 25px; text-align: center; transform: translateZ(40px); background: #fff; }
+        .room-info h4 { font-size: 18px; margin-bottom: 12px; font-weight: 600; letter-spacing: 1.5px; color: var(--dark-bg); }
+        .room-info p { font-size: 13px; color: #777; margin-bottom: 20px; line-height: 1.6; }
+        
+        .room-btn {
+            background: transparent; border: 1px solid var(--gold); color: var(--gold-dark);
+            padding: 8px 24px; border-radius: 20px; font-size: 11px; letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+        .room-card:hover .room-btn { background: var(--gold); color: #fff; }
+        .room-card.cat-room { display: none; }
+
+        /* --- Gallery Slider Section --- */
+        .gallery-section { padding: 40px 20px 100px; text-align: center; }
+        .slider-container {
+            position: relative; max-width: 1000px; margin: 0 auto; overflow: hidden;
+            border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+        }
+        .slides { display: flex; transition: transform 0.6s ease-in-out; }
+        .slide { min-width: 100%; box-sizing: border-box; }
+        .slide img { width: 100%; height: 600px; object-fit: cover; display: block; }
+        .prev, .next {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(15, 14, 13, 0.5); color: var(--gold); border: 1px solid var(--gold);
+            padding: 15px 20px; cursor: none; font-size: 24px; border-radius: 50%;
+            transition: all 0.3s; z-index: 10;
+        }
+        .prev { left: 20px; }
+        .next { right: 20px; }
+        .prev:hover, .next:hover {
+            background: var(--gold); color: #000; box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--dark-bg); color: #aaa;
+            display: flex; justify-style: space-around; align-items: center;
+            padding: 60px 20px; border-top: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative; overflow: hidden;
+        }
+        footer::before {
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 300px; height: 1px; background: radial-gradient(circle, var(--gold) 0%, transparent 100%);
+            box-shadow: 0 0 20px var(--gold);
+        }
+        .footer-item { display: flex; align-items: center; gap: 20px; transition: transform 0.4s ease; text-align: left; }
+        .footer-item:hover { transform: translateY(-5px); }
+        .footer-item i { color: var(--gold); font-size: 26px; filter: drop-shadow(0 0 8px var(--gold-glow)); }
+        .footer-item h5 { color: #fff; font-size: 14px; margin-bottom: 5px; font-weight: 500; letter-spacing: 2px; }
+        .footer-item p { font-size: 12px; line-height: 1.6; }
+        .map-link { color: var(--gold); text-decoration: none; font-weight: 500; }
+        .map-link:hover { text-decoration: underline; }
+
+        /* --- Floating Contact Buttons --- */
+        .floating-contact {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+        .fab-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: var(--dark-bg);
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+            border: 2px solid var(--gold-light);
+            position: relative;
+            overflow: hidden;
+            cursor: none;
+        }
+        .fab-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            transition: left 0.7s ease;
+        }
+        .fab-btn:hover::before { left: 100%; }
+        .fab-btn:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 15px 35px var(--gold-glow);
+            color: #000;
+        }
+        .fab-call { animation: goldPulse 2.5s infinite; }
+
+        /* --- Animations --- */
+        .reveal { opacity: 0; transform: translateY(60px); transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        @keyframes pulseGlow {
+            0% { text-shadow: 0 0 10px rgba(212,175,55,0.2); transform: scale(0.95); }
+            100% { text-shadow: 0 0 30px var(--gold); transform: scale(1.05); }
+        }
+        @keyframes loadLine { 0% { width: 0; } 100% { width: 100px; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes scaleReveal { from { opacity: 0; transform: scale(0.85); filter: blur(5px); } to { opacity: 1; transform: scale(1); filter: blur(0); } }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            20% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+        }
+        @keyframes goldPulse {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6); }
+            70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            * { cursor: auto !important; }
+            .cursor-dot, .cursor-outline { display: none !important; }
+            header { padding: 15px; background: var(--dark-bg); }
+            nav { display: none; }
+            .hero-content h1 { font-size: 3.5rem; }
+            .features { grid-template-columns: 1fr; margin: -40px 20px 40px; }
+            .rooms-grid { grid-template-columns: 1fr; gap: 25px; padding: 0 15px; }
+            .room-card { transform: none !important; }
+            .slide img { height: 350px; }
+            .prev, .next { padding: 10px 15px; font-size: 18px; cursor: pointer; }
+            footer { flex-direction: column; gap: 40px; text-align: center; }
+            .footer-item { flex-direction: column; text-align: center; }
+            .floating-contact { bottom: 20px; right: 20px; }
+            .fab-btn { width: 50px; height: 50px; font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-logo"><i class="fa-solid fa-crown"></i></div>
+        <div class="loader-line"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <header id="header">
+        <div class="logo">
+            <img src="https://github.com/Tong114455/doghotttel/blob/main/%E0%B9%82%E0%B8%A5%E0%B9%82%E0%B8%81%E0%B9%89.jpg?raw=true" alt="LUXU Pet Hotel Pattaya Logo โรงแรมสัตว์เลี้ยงพัทยา มาบประชัน">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" id="nav-home">HOME</a></li>
+                <li><a href="#" id="nav-rooms">ROOMS & SUITES</a></li>
+                <li><a href="#" id="nav-facilities">FACILITIES</a></li>
+                <li><a href="#gallery" id="nav-gallery">GALLERY</a></li>
+                <li><a href="#contact" id="nav-contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button class="btn-book interactive" onclick="window.open('https://web.facebook.com/luxupethotel/', '_blank')"><span id="btn-book-text">BOOK NOW</span></button>
+            <div class="lang-switch interactive" onclick="toggleLanguage()">
+                <span id="currentLangLabel">TH</span>
+                <img src="https://github.com/Tong114455/doghotttel/blob/main/%E0%B9%84%E0%B8%97%E0%B8%A2.png?raw=true" alt="ภาษาไทย TH" id="flag-img">
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="heroSection">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-overlay"></div>
+        <div id="particles"></div> 
+
+        <div class="pet-toggle interactive">
+            <button class="toggle-btn active" id="btnDog" onclick="switchPet('dog')">
+                <i class="fa-solid fa-dog"></i> <span id="toggle-dog-text">DOGS</span>
+            </button>
+            <button class="toggle-btn" id="btnCat" onclick="switchPet('cat')">
+                <i class="fa-solid fa-cat"></i> <span id="toggle-cat-text">CATS</span>
+            </button>
+        </div>
+
+        <div class="hero-content">
+            <h3 id="hero-sub">WELCOME TO THE</h3>
+            <h1>LUXU<br>PET HOTEL</h1>
+            <p id="heroText">สัมผัสประสบการณ์การพักผ่อนระดับพรีเมียมสำหรับน้องหมาของคุณ ที่พัทยา มาบประชัน</p>
+        </div>
+    </section>
+
+    <div class="features reveal">
+        <div class="feature-box interactive">
+            <i class="fa-solid fa-crown"></i>
+            <h4 id="f1-title">LUXURY STAY</h4>
+            <p id="f1-desc">ห้องพักหรูหราระดับ 5 ดาว สะอาด ปลอดภัย ออกแบบเพื่อความสบายสูงสุดของสัตว์เลี้ยง</p>
+        </div>
+        <div class="feature-box interactive">
+            <i class="fa-solid fa-user-nurse"></i>
+            <h4 id="f2-title">24/7 EXPERT CARE</h4>
+            <p id="f2-desc">ทีมผู้เชี่ยวชาญดูแลสัตว์เลี้ยงอย่างใกล้ชิดตลอด 24 ชั่วโมง ไร้กังวลทุกการเดินทาง</p>
+        </div>
+        <div class="feature-box interactive">
+            <i class="fa-solid fa-bell-concierge"></i>
+            <h4 id="f3-title">PREMIUM DINING</h4>
+            <p id="f3-desc">เสิร์ฟอาหารเกรดพรีเมียม คัดสรรวัตถุดิบคุณภาพเพื่อสุขภาพที่ดีของหมาและแมว</p>
+        </div>
+        <div class="feature-box interactive">
+            <i class="fa-solid fa-video"></i>
+            <h4 id="f4-title">LIVE WEBCAM</h4>
+            <p id="f4-desc">ระบบกล้องวงจรปิดความคมชัดสูง ดูสัตว์เลี้ยงผ่านมือถือได้ตลอด 24 ชั่วโมง</p>
+        </div>
+    </div>
+
+    <section class="rooms-section">
+        <h2 class="section-title reveal" id="rooms-title">EXCLUSIVE SUITES</h2>
+        
+        <div class="rooms-grid">
+            <!-- DOG ROOMS -->
+            <div class="room-card dog-room interactive reveal" style="transition-delay: 0.1s;">
+                <div class="room-img-wrapper"><img src="https://github.com/Tong114455/doghotttel/blob/main/Gemini_Generated_Image_ogfrclogfrclogfr.jpg?raw=true" alt="VIP ROOM สุนัข โรงแรมสุนัขพัทยา LUXU Pet Hotel"></div>
+                <div class="room-info">
+                    <h4 id="r-dog1-title">VIP ROOM</h4>
+                    <p id="r-dog1-desc">ห้องพักส่วนตัวกว้างขวาง พร้อมเตียงนุ่มพิเศษและระบบปรับอากาศ</p>
+                    <button class="room-btn" onclick="window.location.href='https://roomdog.edgeone.dev'">VIEW DETAILS</button>
+                </div>
+            </div>
+            <div class="room-card dog-room interactive reveal" style="transition-delay: 0.2s;">
+                <div class="room-img-wrapper"><img src="https://github.com/Tong114455/doghotttel/blob/main/wall%E0%B8%A1%E0%B8%B21.jpg?raw=true" alt="DOG SPA PREMIUM บริการอาบน้ำตัดขนสุนัขพัทยา"></div>
+                <div class="room-info">
+                    <h4 id="r-dog2-title">DOG SPA PREMIUM</h4>
+                    <p id="r-dog2-desc">อาบน้ำหมา ตัดแต่งขน และสปาสุนัขพรีเมียม</p>
+                    <button class="room-btn" onclick="window.location.href='https://dogmama.edgeone.dev'">VIEW DETAILS</button>
+                </div>
+            </div>
+            <div class="room-card dog-room interactive reveal" style="transition-delay: 0.3s;">
+                <div class="room-img-wrapper"><img src="https://github.com/Tong114455/doghotttel/blob/main/waall%E0%B8%AB%E0%B8%A1%E0%B8%B23.jpg?raw=true" alt="PLAYGROUND สนามหญ้าวิ่งเล่นสุนัข พัทยา มาบประชัน"></div>
+                <div class="room-info">
+                    <h4 id="r-dog3-title">PLAYGROUND</h4>
+                    <p id="r-dog3-desc">พื้นที่สนามหญ้าวิ่งเล่นกว้างขวาง a look</p>
+                    <button class="room-btn" onclick="window.open('https://www.shorturl.asia/r0em3e', '_blank')">VIEW MAP</button>
+                </div>
+            </div>
+
+            <!-- CAT ROOMS -->
+            <div class="room-card cat-room interactive reveal" style="transition-delay: 0.1s;">
+                <div class="room-img-wrapper"><img src="https://github.com/Tong114455/cat/blob/main/%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%9B%E0%B8%811.jpg?raw=true" alt="DELUXE CAT CONDO คอนโดแมวพัทยา โรงแรมแมวโป่ง"></div>
+                <div class="room-info">
+                    <h4 id="r-cat1-title">DELUXE CAT CONDO</h4>
+                    <p id="r-cat1-desc">คอนโดแมวบรรยากาศเงียบสงบ พร้อมระบบระบายอากาศแยกส่วน</p>
+                    <button class="room-btn" onclick="window.location.href='https://roomcat.edgeone.dev'">VIEW DETAILS</button>
+                </div>
+            </div>
+            <div class="room-card cat-room interactive reveal" style="transition-delay: 0.2s;">
+                <div class="room-img-wrapper"><img src="https://github.com/Tong114455/cat/blob/main/%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%9B%E0%B8%813.jpg?raw=true" alt="CATS SPA PREMIUM บริการอาบน้ำตัดขนแมวพัทยา"></div>
+                <div class="room-info">
+                    <h4 id="r-cat2-title">CATS SPA PREMIUM</h4>
+                    <p id="r-cat2-desc">บริการอาบน้ำ ตัดแต่งขน และสปาสุดเอ็กซ์คลูซีฟ เพื่อปรนนิบัติน้องแมวอย่างเหนือระดับ</p>
+                    <button class="room-btn" onclick="window.location.href='https://cutcut.edgeone.dev'">VIEW DETAILS</button>
+                </div>
+            </div>
+            <div class="room-card cat-room interactive reveal" style="transition-delay: 0.3s;">
+                <div class="room-img-wrapper"><img src="https://github.com/Tong114455/cat/blob/main/577722099_1186220523603646_7012328930552892684_n.jpg?raw=true" alt="THE CAT PENTHOUSE เพนต์เฮาส์แมวพัทยา มาบประชัน"></div>
+                <div class="room-info">
+                    <h4 id="r-cat3-title">THE CAT PENTHOUSE</h4>
+                    <p id="r-cat3-desc">เพนต์เฮาส์สูงสุด หรูหราเป็นส่วนตัว กระจกใสรอบด้านและPLAYGROUND</p>
+                    <button class="room-btn">VIEW DETAILS</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SLIDER SECTION -->
+    <section class="gallery-section reveal" id="gallery">
+        <h2 class="section-title">GALLERY</h2>
+        <div class="slider-container interactive">
+            <div class="slides" id="slidesContainer"></div>
+            <button class="prev interactive" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="next interactive" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-item interactive">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+                <h5 id="foot-loc-title">LUXU LOCATION</h5>
+                <p id="foot-loc-desc">พัทยา ต.โป่ง ขอบอ่างมาบประชัน<br><a href="https://share.google/mFfCKCMZzmJI8WmuA" target="_blank" class="map-link">Google Maps</a></p>
+            </div>
+        </div>
+        <div class="footer-item interactive">
+            <i class="fa-regular fa-clock"></i>
+            <div>
+                <h5 id="foot-hours-title">RECEPTION</h5>
+                <p id="foot-hours-desc">เปิดบริการทุกวัน<br>08.00 น. - 20.00 น.</p>
+            </div>
+        </div>
+        <div class="footer-item interactive">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+                <h5 id="foot-call-title">CONTACT & BOOKING</h5>
+                <p>โทร: 099-3289264<br>Line ID: @luxupethotel<br>จองคิวห้องพัก | อาบน้ำ-ตัดขน</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Contact Buttons -->
+    <div class="floating-contact">
+        <a href="https://www.facebook.com/search/top/?q=luxu%20pethotel%20pattaya" target="_blank" class="fab-btn interactive" title="Facebook LUXU Pet Hotel Pattaya">
+            <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="tel:0993289264" class="fab-btn fab-call interactive" title="Call Now โทรจองห้องพักสัตว์เลี้ยง">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+    </div>
+
+    <script>
+        // --- 1. Preloader ---
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+            }, 800);
+        });
+
+        // --- 2. Custom Cursor ---
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorOutline = document.getElementById('cursor-outline');
+        
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX; const posY = e.clientY;
+            cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
+            setTimeout(() => {
+                cursorOutline.style.left = `${posX}px`; cursorOutline.style.top = `${posY}px`;
+            }, 50);
+        });
+
+        document.querySelectorAll('a, button, .interactive').forEach(el => {
+            el.addEventListener('mouseenter', () => cursorOutline.classList.add('expand'));
+            el.addEventListener('mouseleave', () => cursorOutline.classList.remove('expand'));
+        });
+
+        // --- 3. Header Shrink on Scroll ---
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        // --- 4. Floating Particles in Hero ---
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for(let i = 0; i < 40; i++) {
+                let p = document.createElement('div');
+                p.classList.add('particle');
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                p.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(p);
+            }
+        }
+        createParticles();
+
+        // --- 5. Interactive 3D Tilt Effect for Cards ---
+        const cards = document.querySelectorAll('.room-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                if(window.innerWidth <= 768) return;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -10;
+                const rotateY = ((x - centerX) / centerX) * 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            });
+        });
+
+        // --- 6. Scroll Reveal Observer ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- 7. Gallery Data & Slider Logic ---
+        const galleryImages = {
+            dog: [
+                "https://github.com/Tong114455/dogcat/blob/main/777851644_1413283540897342_7650669010688347185_n.jpg?raw=true",
+                "https://github.com/Tong114455/dogcat/blob/main/777825456_1413282504230779_8026578012507902402_n.jpg?raw=true",
+                "https://github.com/Tong114455/dogcat/blob/main/734339434_1372062145019482_1577848434923362671_n.jpg?raw=true",
+                "https://github.com/Tong114455/dogcat/blob/main/649386485_1277021261190238_8790062018853570049_n.jpg?raw=true",
+                "https://github.com/Tong114455/dogcat/blob/main/641333360_1268352108723820_8730530317629757668_n.jpg?raw=true",
+                "https://github.com/Tong114455/doghotttel/blob/main/f8.jpg?raw=true",
+                "https://github.com/Tong114455/doghotttel/blob/main/f5.jpg?raw=true",
+                "https://github.com/Tong114455/doghotttel/blob/main/f3.jpg?raw=true",
+                "https://github.com/Tong114455/doghotttel/blob/main/f12.jpg?raw=true",
+                "https://github.com/Tong114455/doghotttel/blob/main/f11.jpg?raw=true",
+                "https://github.com/Tong114455/doghotttel/blob/main/f1.jpg?raw=true"
+            ],
+            cat: [
+                "https://github.com/Tong114455/cat/blob/main/s1.jpg?raw=true",
+                "https://github.com/Tong114455/cat/blob/main/s2.jpg?raw=true",
+                "https://github.com/Tong114455/cat/blob/main/s3.jpg?raw=true",
+                "https://github.com/Tong114455/cat/blob/main/s4.jpg?raw=true"
+            ]
+        };
+
+        let slideIndex = 0;
+
+        function renderGallery(type) {
+            const container = document.getElementById('slidesContainer');
+            const images = galleryImages[type] || galleryImages.dog;
+            container.innerHTML = images.map((url, i) => `
+                <div class="slide"><img src="${url}" alt="LUXU Pet Hotel Gallery ${type} ${i + 1}"></div>
+            `).join('');
+            slideIndex = 0;
+            container.style.transform = `translateX(0%)`;
+        }
+
+        function moveSlide(step) {
+            const slides = document.getElementById('slidesContainer');
+            const totalSlides = slides.children.length;
+            if (totalSlides === 0) return;
+            
+            slideIndex += step;
+            if (slideIndex >= totalSlides) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = totalSlides - 1;
+            
+            slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+
+        setInterval(() => moveSlide(1), 5000);
+
+        // --- 8. Language & Pet Toggle Logic ---
+        let currentLang = 'th';
+        let currentPet = 'dog';
+        const i18n = {
+            th: {
+                flag: "https://github.com/Tong114455/doghotttel/blob/main/%E0%B9%84%E0%B8%97%E0%B8%A2.png?raw=true",
+                heroDog: "สัมผัสประสบการณ์การพักผ่อนระดับพรีเมียมสำหรับน้องหมาของคุณ ที่พัทยา มาบประชัน",
+                heroCat: "สัมผัสประสบการณ์การพักผ่อนระดับพรีเมียมสำหรับน้องแมวของคุณ ที่พัทยา มาบประชัน",
+                f1: "ห้องพักหรูหราระดับ 5 ดาว สะอาด ปลอดภัย ออกแบบเพื่อความสบายสูงสุดของสัตว์เลี้ยง",
+                f2: "ทีมผู้เชี่ยวชาญดูแลสัตว์เลี้ยงอย่างใกล้ชิดตลอด 24 ชั่วโมง ไร้กังวลทุกการเดินทาง",
+                f3: "เสิร์ฟอาหารเกรดพรีเมียม คัดสรรวัตถุดิบคุณภาพเพื่อสุขภาพที่ดีของหมาและแมว",
+                f4: "ระบบกล้องวงจรปิดความคมชัดสูง ดูสัตว์เลี้ยงผ่านมือถือได้ตลอด 24 ชั่วโมง",
+                rDog1: "ห้องพักส่วนตัวกว้างขวาง พร้อมเตียงนุ่มพิเศษและระบบปรับอากาศ",
+                rDog2: "อาบน้ำหมา ตัดแต่งขน และสปาสุนัขพรีเมียม",
+                rDog3: "พื้นที่สนามหญ้าวิ่งเล่นกว้างขวาง a look",
+                rCat1: "คอนโดแมวบรรยากาศเงียบสงบ พร้อมระบบระบายอากาศแยกส่วน",
+                rCat2: "บริการอาบน้ำ ตัดแต่งขน และสปาสุดเอ็กซ์คลูซีฟ เพื่อปรนนิบัติน้องแมวอย่างเหนือระดับ",
+                rCat3: "เพนต์เฮาส์สูงสุด หรูหราเป็นส่วนตัว กระจกใสรอบด้านและPLAYGROUND",
+                locDesc: "พัทยา ต.โป่ง ขอบอ่างมาบประชัน",
+                hoursDesc: "เปิดบริการทุกวัน<br>08.00 น. - 20.00 น."
+            },
+            en: {
+                flag: "https://github.com/Tong114455/doghotttel/blob/main/%E0%B8%AD%E0%B8%B1%E0%B8%87.png?raw=true",
+                heroDog: "Experience premium luxury stays crafted exclusively for your beloved dogs in Pattaya.",
+                heroCat: "Experience premium luxury stays crafted exclusively for your beloved cats in Pattaya.",
+                f1: "5-Star luxury rooms, perfectly clean and designed for ultimate pet comfort.",
+                f2: "Close supervision by pet care experts 24/7. Travel with absolute peace of mind.",
+                f3: "Serving premium grade meals, carefully selected for optimal health.",
+                f4: "High-definition CCTV webcam system, accessible via your smartphone 24/7.",
+                rDog1: "Spacious private VIP room with ultra-soft bedding and climate control.",
+                rDog2: "Dog bathing, grooming, and premium spa services.",
+                rDog3: "Spacious outdoor playground area. Take a look.",
+                rCat1: "Peaceful deluxe cat condo environment with dedicated ventilation systems.",
+                rCat2: "Exclusive cat bathing, grooming, and spa services to pamper your feline friend.",
+                rCat3: "The ultimate penthouse. Luxurious, highly private, with panoramic glass and playground.",
+                locDesc: "Mabprachan Reservoir, Pong, Pattaya",
+                hoursDesc: "Open Daily<br>08:00 AM - 08:00 PM"
+            }
+        };
+
+        function switchPet(type) {
+            currentPet = type;
+            const heroBg = document.getElementById('heroBg');
+            const heroText = document.getElementById('heroText');
+            
+            heroText.style.opacity = '0';
+            heroText.style.transform = 'translateY(15px)';
+
+            setTimeout(() => {
+                if (type === 'dog') {
+                    document.getElementById('btnDog').classList.add('active');
+                    document.getElementById('btnCat').classList.remove('active');
+                    heroBg.style.backgroundImage = "url('https://github.com/Tong114455/doghotttel/blob/main/%E0%B8%AB%E0%B8%A1%E0%B8%B2.jpg?raw=true')";
+                    heroText.innerText = i18n[currentLang].heroDog;
+                    document.querySelectorAll('.dog-room').forEach(el => el.style.display = 'block');
+                    document.querySelectorAll('.cat-room').forEach(el => el.style.display = 'none');
+                } else {
+                    document.getElementById('btnCat').classList.add('active');
+                    document.getElementById('btnDog').classList.remove('active');
+                    heroBg.style.backgroundImage = "url('https://github.com/Tong114455/cat/blob/main/%E0%B9%81%E0%B8%A1%E0%B8%A71.jpg?raw=true')";
+                    heroText.innerText = i18n[currentLang].heroCat;
+                    document.querySelectorAll('.cat-room').forEach(el => el.style.display = 'block');
+                    document.querySelectorAll('.dog-room').forEach(el => el.style.display = 'none');
+                }
+                renderGallery(type);
+                heroText.style.opacity = '1';
+                heroText.style.transform = 'translateY(0)';
+            }, 400);
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'th' ? 'en' : 'th';
+            const langData = i18n[currentLang];
+            
+            document.getElementById('currentLangLabel').innerText = currentLang.toUpperCase();
+            document.getElementById('flag-img').src = langData.flag;
+            document.getElementById('heroText').innerText = currentPet === 'dog' ? langData.heroDog : langData.heroCat;
+            
+            document.getElementById('f1-desc').innerText = langData.f1;
+            document.getElementById('f2-desc').innerText = langData.f2;
+            document.getElementById('f3-desc').innerText = langData.f3;
+            document.getElementById('f4-desc').innerText = langData.f4;
+
+            document.getElementById('r-dog1-desc').innerText = langData.rDog1;
+            document.getElementById('r-dog2-desc').innerText = langData.rDog2;
+            document.getElementById('r-dog3-desc').innerText = langData.rDog3;
+            
+            document.getElementById('r-cat1-desc').innerText = langData.rCat1;
+            document.getElementById('r-cat2-desc').innerText = langData.rCat2;
+            document.getElementById('r-cat3-desc').innerText = langData.rCat3;
+
+            let locDescNode = document.getElementById('foot-loc-desc');
+            locDescNode.innerHTML = langData.locDesc + '<br><a href="https://share.google/mFfCKCMZzmJI8WmuA" target="_blank" class="map-link">Google Maps</a>';
+            document.getElementById('foot-hours-desc').innerHTML = langData.hoursDesc;
+        }
+
+        renderGallery('dog');
+    </script>
+</body>
+</html>
