@@ -19,7 +19,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    ฟฟ
     <style>
         :root {
             --gold: #d4af37;
@@ -218,10 +218,11 @@
         }
 
         .pet-toggle {
-            position: absolute; top: 120px; z-index: 10;
-            display: flex; background: rgba(0,0,0,0.6);
+            display: inline-flex; z-index: 10; margin-top: 30px;
+            background: rgba(0,0,0,0.6);
             border: 1px solid rgba(255,255,255,0.1); border-radius: 40px; padding: 5px;
             backdrop-filter: blur(10px); box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease 1s both;
         }
         .toggle-btn {
             background: transparent; color: #aaa; border: none; padding: 10px 35px;
@@ -479,19 +480,19 @@
         <div class="hero-overlay"></div>
         <div id="particles"></div> 
 
-        <div class="pet-toggle interactive">
-            <button class="toggle-btn active" id="btnDog" onclick="switchPet('dog')">
-                <i class="fa-solid fa-dog"></i> <span id="toggle-dog-text">DOGS</span>
-            </button>
-            <button class="toggle-btn" id="btnCat" onclick="switchPet('cat')">
-                <i class="fa-solid fa-cat"></i> <span id="toggle-cat-text">CATS</span>
-            </button>
-        </div>
-
         <div class="hero-content">
             <h3 id="hero-sub">WELCOME TO THE</h3>
             <h1>LUXU<br>PET HOTEL</h1>
             <p id="heroText">สัมผัสประสบการณ์การพักผ่อนระดับพรีเมียมสำหรับน้องหมาของคุณ ที่พัทยา มาบประชัน</p>
+
+            <div class="pet-toggle interactive">
+                <button class="toggle-btn active" id="btnDog" onclick="switchPet('dog')">
+                    <i class="fa-solid fa-dog"></i> <span id="toggle-dog-text">DOGS</span>
+                </button>
+                <button class="toggle-btn" id="btnCat" onclick="switchPet('cat')">
+                    <i class="fa-solid fa-cat"></i> <span id="toggle-cat-text">CATS</span>
+                </button>
+            </div>
         </div>
     </section>
 
@@ -804,7 +805,7 @@
                 } else {
                     document.getElementById('btnCat').classList.add('active');
                     document.getElementById('btnDog').classList.remove('active');
-                    heroBg.style.backgroundImage = "url('https://github.com/Tong114455/cat/blob/main/%E0%B9%81%E0%B8%A1%E0%B8%A71.jpg?raw=true')";
+                    heroBg.style.backgroundImage = "url('https://github.com/Tong114455/dogcat/blob/main/%E0%B9%81%E0%B8%A1%E0%B8%A72.jpg?raw=true')";
                     heroText.innerText = i18n[currentLang].heroCat;
                     document.querySelectorAll('.cat-room').forEach(el => el.style.display = 'block');
                     document.querySelectorAll('.dog-room').forEach(el => el.style.display = 'none');
